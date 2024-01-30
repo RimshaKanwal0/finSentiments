@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'reports',
     'jobs',
     'api',
+    "base.apps.BaseConfig"
 ]
 
 MIDDLEWARE = [

@@ -4,12 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Example URLs setup to avoid exception.">
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Custom User form updated.">
+      <change afterPath="$PROJECT_DIR$/datasets/forms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finSentiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finSentiments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,7 +116,7 @@
       <workItem from="1706451734412" duration="1941000" />
       <workItem from="1706604154392" duration="184000" />
       <workItem from="1706604356804" duration="1613000" />
-      <workItem from="1706609687852" duration="5147000" />
+      <workItem from="1706609687852" duration="5989000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -150,7 +150,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706612579479</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Custom User form updated.">
+      <option name="closed" value="true" />
+      <created>1706616924302</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1706616924302</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +179,7 @@
     <MESSAGE value="New apps initialized." />
     <MESSAGE value="Initial settings done for urls." />
     <MESSAGE value="Example URLs setup to avoid exception." />
-    <option name="LAST_COMMIT_MESSAGE" value="Example URLs setup to avoid exception." />
+    <MESSAGE value="Custom User form updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Custom User form updated." />
   </component>
 </project>
