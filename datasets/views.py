@@ -1,29 +1,26 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth.decorators import login_required
-from .forms import DatasetForm
+from django.shortcuts import render, redirect, get_object_or_404
+from django.urls import reverse
 from .models import Dataset
-
-
-@login_required
-def upload_dataset(request):
-    if request.method == 'POST':
-        form = DatasetForm(request.POST, request.FILES)
-        if form.is_valid():
-            dataset = form.save(commit=False)
-            dataset.created_by = request.user
-            dataset.updated_by = request.user
-            dataset.save()
-            return redirect('datasets:dataset_list')
-    else:
-        form = DatasetForm()
-    return render(request, 'datasets/upload.html', {'form': form})
+from .forms import DatasetForm
 
 
 def dataset_list(request):
+    if request.method == 'POST':
+        form = DatasetForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(reverse('datasets:dataset_list'))
+    else:
+        form = DatasetForm()
+
     datasets = Dataset.objects.all()
-    return render(request, 'datasets/dataset_list.html', {'datasets': datasets})
+    return render(request, 'datasets/dataset_list.html', {
+        'form': form,
+        'datasets': datasets
+    })
 
 
 def dataset_delete(request, pk):
-    Dataset.objects.get(pk=pk).delete()
-    return redirect('datasets:dataset_list')
+    dataset = get_object_or_404(Dataset, pk=pk)
+    dataset.delete()
+    return redirect(reverse('datasets:dataset_list'))
