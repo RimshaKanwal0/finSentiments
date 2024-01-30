@@ -21,6 +21,7 @@ from django.conf.urls.static import static
 
 
 urlpatterns = [
+    path('', include('frontend.urls')),  # This will include the URL patterns from the frontend app
     path('admin/', admin.site.urls),
     path('users/', include('users.urls')),  # Include URLs from the users app
     path('datasets/', include('datasets.urls')),
@@ -28,4 +29,7 @@ urlpatterns = [
     path('reports/', include('reports.urls')),
     path('jobs/', include('jobs.urls')),
     path('api/', include('api.urls')),
+
+
+
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

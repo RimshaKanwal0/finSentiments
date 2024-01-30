@@ -28,3 +28,9 @@ def perform_analysis(request):
 
     datasets = Dataset.objects.all()  # Assuming user has permission to view all datasets
     return render(request, 'analysis/perform_analysis.html', {'datasets': datasets})
+
+
+def analysis_result(request, dataset_id):
+    dataset = get_object_or_404(Dataset, id=dataset_id)
+    results = AnalysisResult.objects.filter(dataset=dataset)
+    return render(request, 'analysis/analysis_result.html', {'results': results, 'dataset': dataset})

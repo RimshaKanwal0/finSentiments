@@ -4,21 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Base template is set. And initial settings of various models done.">
-      <change afterPath="$PROJECT_DIR$/analysis/api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/serializers.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/templates/analysis/perform_analysis.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/templates/analysis/results.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/utils.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/templates/frontend/about.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/templates/frontend/contact.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/templates/frontend/home.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/templates/frontend/related_work.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/urls.py" afterDir="false" />
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Basic structure of website.">
+      <change afterPath="$PROJECT_DIR$/analysis/templates/analysis/analysis_result.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/analysis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finSentiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finSentiments/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/urls.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +121,7 @@
       <workItem from="1706451734412" duration="1941000" />
       <workItem from="1706604154392" duration="184000" />
       <workItem from="1706604356804" duration="1613000" />
-      <workItem from="1706609687852" duration="15301000" />
+      <workItem from="1706609687852" duration="16796000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -196,7 +187,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706623051630</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Implemented basic logic of sentiment analysis and working on structure of the website.">
+      <option name="closed" value="true" />
+      <created>1706628187884</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1706628187884</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Basic structure of website.">
+      <option name="closed" value="true" />
+      <created>1706628329559</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1706628329559</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -221,6 +228,8 @@
     <MESSAGE value="Base app created." />
     <MESSAGE value="Unversioned files." />
     <MESSAGE value="Base template is set. And initial settings of various models done." />
-    <option name="LAST_COMMIT_MESSAGE" value="Base template is set. And initial settings of various models done." />
+    <MESSAGE value="Implemented basic logic of sentiment analysis and working on structure of the website." />
+    <MESSAGE value="Basic structure of website." />
+    <option name="LAST_COMMIT_MESSAGE" value="Basic structure of website." />
   </component>
 </project>
