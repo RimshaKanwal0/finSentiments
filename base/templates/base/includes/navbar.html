@@ -1,3 +1,5 @@
+{% load custom_tags %}
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="{% url 'frontend:home' %}">FinSentiments</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,17 +61,19 @@
                 </ul>
             </li>
 
-            <!-- Trading Tools -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTradingTools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Trading Tools
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Trading Simulator</a></li>
-                    <li><a class="dropdown-item" href="#">Market News</a></li>
-                    <li><a class="dropdown-item" href="#">Stock Alerts</a></li>
-                </ul>
-            </li>
+            {% if user|has_group:"Admin" %}
+                <!-- Trading Tools -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTradingTools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Trading Tools
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#">Trading Simulator</a></li>
+                        <li><a class="dropdown-item" href="#">Market News</a></li>
+                        <li><a class="dropdown-item" href="#">Stock Alerts</a></li>
+                    </ul>
+                </li>
+            {% endif %}
 
             <!-- Account and Transaction Management -->
             <li class="nav-item dropdown">

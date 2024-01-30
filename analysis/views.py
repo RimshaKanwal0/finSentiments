@@ -4,6 +4,7 @@ from .utils import perform_sentiment_analysis, preprocess_data
 from django.contrib.auth.decorators import login_required
 
 
+
 @login_required
 def analysis_input(request):
     # Handle form submission and analysis logic here if needed
@@ -16,8 +17,14 @@ def analysis_progress(request):
 
 
 def perform_analysis(request):
-    # Handle form submission and analysis logic here if needed
-    return render(request, 'analysis/perform_analysis.html')
+    datasets = Dataset.objects.all()  # Get all dataset instances
+
+    if request.method == 'POST':
+        # Handle the file upload and analysis process
+        pass
+
+    return render(request, 'analysis/perform_analysis.html', {'datasets': datasets})
+
 # @login_required
 # def perform_analysis(request):
 #     if request.method == 'POST':

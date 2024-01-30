@@ -4,14 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Improvements made to the website.">
-      <change afterPath="$PROJECT_DIR$/analysis/templates/analysis/analysis_input.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/analysis/templates/analysis/analysis_progress.html" afterDir="false" />
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Updated design of perform_analysis.html and created custom_tags.py.">
+      <change afterPath="$PROJECT_DIR$/datasets/templates/datasets/dataset_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/templates/analysis/perform_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/templates/analysis/perform_analysis.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/analysis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/templates/base/includes/navbar.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/includes/navbar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/templatetags/custom_tags.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/templatetags/custom_tags.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -129,7 +131,7 @@
       <workItem from="1706451734412" duration="1941000" />
       <workItem from="1706604154392" duration="184000" />
       <workItem from="1706604356804" duration="1613000" />
-      <workItem from="1706609687852" duration="25064000" />
+      <workItem from="1706609687852" duration="27234000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -227,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706631332477</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Updated design of perform_analysis.html and created custom_tags.py.">
+      <option name="closed" value="true" />
+      <created>1706638219276</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1706638219276</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -256,6 +266,7 @@
     <MESSAGE value="Basic structure of website." />
     <MESSAGE value="Base template updated along with frontend." />
     <MESSAGE value="Improvements made to the website." />
-    <option name="LAST_COMMIT_MESSAGE" value="Improvements made to the website." />
+    <MESSAGE value="Updated design of perform_analysis.html and created custom_tags.py." />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated design of perform_analysis.html and created custom_tags.py." />
   </component>
 </project>

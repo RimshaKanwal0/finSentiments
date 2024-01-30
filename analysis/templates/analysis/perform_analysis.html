@@ -1,73 +1,53 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<div class="container">
-    <h2 class="mt-4 mb-4">Financial Sentiment Analysis</h2>
-    <form method="post" action="{% url 'perform-analysis' dataset.id %}">
-        {% csrf_token %}
-        <div class="form-group">
-            <label for="dataset">Choose a dataset:</label>
-            <select class="form-control" name="dataset" id="dataset">
-                {% for dataset in datasets %}
-                    <option value="{{ dataset.id }}">{{ dataset.name }}</option>
-                {% endfor %}
-            </select>
-        </div>
-
-        <div class="form-group">
-            <fieldset>
-                <legend>Preprocessing Techniques:</legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="technique1" name="preprocessing" value="technique1">
-                    <label class="form-check-label" for="technique1">Technique 1</label>
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="card-title">Perform Financial Sentiment Analysis</h3>
                 </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="technique2" name="preprocessing" value="technique2">
-                    <label class="form-check-label" for="technique2">Technique 2</label>
+                <div class="card-body">
+                    <form method="post" action="{#% url 'analysis:perform_analysis' %#}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <!-- Dataset selection -->
+                        <div class="form-group">
+                            <label for="datasetSelect">Select an existing dataset:</label>
+                            <select class="form-control" id="datasetSelect" name="dataset">
+                                {% for dataset in datasets %}
+                                    <option value="{{ dataset.id }}">{{ dataset.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Select Preprocessing Techniques:</label>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="preprocessing" value="remove_stopwords"> Remove Stopwords</label>
+                            </div>
+                            <div class="checkbox">
+                                <label><input type="checkbox" name="preprocessing" value="lemmatization"> Lemmatization</label>
+                            </div>
+                            <!-- Additional preprocessing techniques -->
+                        </div>
+                        <div class="form-group">
+                            <label for="blending">Blending:</label>
+                            <input type="checkbox" id="blending" name="blending" class="ml-2">
+                            <div class="mt-2">
+                                <label>Select Classifier(s):</label>
+                                <select multiple class="form-control" name="classifier">
+                                    <option value="svm">Support Vector Machine</option>
+                                    <option value="random_forest">Random Forest</option>
+                                    <!-- Additional classifier options -->
+                                </select>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Start Analysis</button>
+                    </form>
                 </div>
-                <!-- Add more preprocessing techniques as needed -->
-            </fieldset>
-        </div>
-
-        <div class="form-group">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="blending" name="blending">
-                <label class="form-check-label" for="blending">Enable Blending</label>
             </div>
         </div>
-
-        <div class="form-group" id="classifiers" disabled>
-            <fieldset>
-                <legend>Choose Classifier:</legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="classifier1" name="classifier" value="classifier1">
-                    <label class="form-check-label" for="classifier1">Classifier 1</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" id="classifier2" name="classifier" value="classifier2">
-                    <label class="form-check-label" for="classifier2">Classifier 2</label>
-                </div>
-                <!-- Add more classifiers as needed -->
-            </fieldset>
-        </div>
-
-        <div class="form-group" id="blending_classifiers" disabled>
-            <fieldset>
-                <legend>Choose Classifiers for Blending:</legend>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="blend_classifier1" name="blend_classifier" value="classifier1">
-                    <label class="form-check-label" for="blend_classifier1">Classifier 1</label>
-                </div>
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="blend_classifier2" name="blend_classifier" value="classifier2">
-                    <label class="form-check-label" for="blend_classifier2">Classifier 2</label>
-                </div>
-                <!-- Add more classifiers for blending as needed -->
-            </fieldset>
-        </div>
-
-        <button type="submit" class="btn btn-primary mt-4">Analyze Dataset</button>
-    </form>
+    </div>
 </div>
 
 <!-- JavaScript to toggle classifier selection based on blending option -->
@@ -79,5 +59,5 @@
     });
 </script>
 
-</div>
+
 {% endblock %}
