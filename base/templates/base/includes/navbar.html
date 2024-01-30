@@ -1,7 +1,106 @@
-<nav>
-    <ul>
-        <li><a href="{% url 'frontend:home' %}">Home</a></li>
-        <li><a href="{% url 'frontend:contact' %}">Contact</a></li>
-        <!-- Add other navigation links as needed -->
-    </ul>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{% url 'frontend:home' %}">FinSentiments</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'frontend:home' %}">Home</a>
+            </li>
+
+            {% if user.is_authenticated %}
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Financial Analysis
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="{% url 'analysis:perform-analysis' %}">Perform Analysis</a></li>
+                        <li><a class="dropdown-item" href="#">Analysis Results</a></li>
+                        <li><a class="dropdown-item" href="#">Business Intelligence</a></li>
+                        <li><a class="dropdown-item" href="#">Reports</a></li>
+                        <li><a class="dropdown-item" href="#">Financial News Portals</a></li>
+                    </ul>
+                </li>
+
+
+            {% endif %}
+
+
+
+            <!-- Additional links can be added here -->
+
+            <!-- Financial Tools -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownFinancialTools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Financial Tools
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Portfolio Management</a></li>
+                    <li><a class="dropdown-item" href="#">Market Analysis</a></li>
+                    <li><a class="dropdown-item" href="#">Stock Screener</a></li>
+                    <li><a class="dropdown-item" href="#">Option Analyzer</a></li>
+                    <li><a class="dropdown-item" href="#">Risk Assessment</a></li>
+                    <li><a class="dropdown-item" href="#">Fundamental Analysis</a></li>
+                    <li><a class="dropdown-item" href="#">Technical Analysis</a></li>
+                </ul>
+            </li>
+
+            <!-- Investment Planning -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownInvestmentPlanning" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Investment Planning
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Asset Allocation</a></li>
+                    <li><a class="dropdown-item" href="#">Retirement Planner</a></li>
+                    <li><a class="dropdown-item" href="#">Tax Planning</a></li>
+                </ul>
+            </li>
+
+            <!-- Trading Tools -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownTradingTools" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Trading Tools
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Trading Simulator</a></li>
+                    <li><a class="dropdown-item" href="#">Market News</a></li>
+                    <li><a class="dropdown-item" href="#">Stock Alerts</a></li>
+                </ul>
+            </li>
+
+            <!-- Account and Transaction Management -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownAccountManagement" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Account Management
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Account Overview</a></li>
+                    <li><a class="dropdown-item" href="#">Transaction History</a></li>
+                    <li><a class="dropdown-item" href="#">Funds Transfer</a></li>
+                </ul>
+            </li>
+
+            <!-- User Profile and Settings -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownUserProfile" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    User Profile
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="{% url 'admin:index' %}">Admin Dashboard</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <!-- Logout -->
+                    <li class="dropdown-item"><a href="#">Logout</a></li>
+                </ul>
+            </li>
+
+
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'frontend:contact' %}">Contact</a>
+            </li>
+        </ul>
+    </div>
 </nav>

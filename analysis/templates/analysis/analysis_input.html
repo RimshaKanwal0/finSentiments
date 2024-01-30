@@ -1,0 +1,47 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <!-- Dataset Selection -->
+    <label for="dataset">Select Dataset File:</label>
+    <input type="file" name="dataset" accept=".csv, .txt">
+
+    <!-- Preprocessing Techniques -->
+    <label for="preprocessing">Select Preprocessing Techniques:</label>
+    <select name="preprocessing" multiple>
+        <option value="remove_stopwords">Remove Stopwords</option>
+        <option value="lemmatization">Lemmatization</option>
+        <!-- Add more preprocessing options here -->
+    </select>
+
+    <!-- Blending Options -->
+    <label for="blending">Blending:</label>
+    <input type="checkbox" name="blending" id="blending_checkbox">
+
+    <!-- Classifier Selection -->
+    <label for="classifiers">Select Classifier(s):</label>
+    <select name="classifiers" multiple>
+        <option value="svm">Support Vector Machine</option>
+        <option value="rf">Random Forest</option>
+        <!-- Add more classifier options here -->
+    </select>
+
+    <!-- Start Analysis Button -->
+    <input type="submit" value="Start Analysis">
+</form>
+
+
+<script>
+    document.getElementById('blending_checkbox').addEventListener('change', function() {
+        var classifiersSelect = document.querySelector('select[name="classifiers"]');
+        classifiersSelect.disabled = !this.checked;
+        if (!this.checked) {
+            // Clear selections if blending is turned off
+            classifiersSelect.selectedIndex = -1;
+        }
+    });
+</script>
+
+{% endblock %}
