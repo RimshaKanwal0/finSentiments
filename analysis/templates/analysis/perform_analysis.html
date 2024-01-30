@@ -1,0 +1,56 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<h2>Perform Sentiment Analysis</h2>
+<form method="post" action="{% url 'perform-analysis' dataset.id %}">
+    {% csrf_token %}
+    <label for="dataset">Choose a dataset:</label>
+    <select name="dataset" id="dataset">
+        {% for dataset in datasets %}
+            <option value="{{ dataset.id }}">{{ dataset.name }}</option>
+        {% endfor %}
+    </select>
+
+    <fieldset>
+        <legend>Preprocessing Techniques:</legend>
+        <input type="checkbox" id="technique1" name="preprocessing" value="technique1">
+        <label for="technique1">Technique 1</label><br>
+        <input type="checkbox" id="technique2" name="preprocessing" value="technique2">
+        <label for="technique2">Technique 2</label><br>
+        <!-- Add more preprocessing techniques as needed -->
+    </fieldset>
+
+    <label for="blending">Enable Blending:</label>
+    <input type="checkbox" id="blending" name="blending"><br>
+
+    <fieldset id="classifiers" disabled>
+        <legend>Choose Classifier:</legend>
+        <input type="radio" id="classifier1" name="classifier" value="classifier1">
+        <label for="classifier1">Classifier 1</label><br>
+        <input type="radio" id="classifier2" name="classifier" value="classifier2">
+        <label for="classifier2">Classifier 2</label><br>
+        <!-- Add more classifiers as needed -->
+    </fieldset>
+
+    <fieldset id="blending_classifiers" disabled>
+        <legend>Choose Classifiers for Blending:</legend>
+        <input type="checkbox" id="blend_classifier1" name="blend_classifier" value="classifier1">
+        <label for="blend_classifier1">Classifier 1</label><br>
+        <input type="checkbox" id="blend_classifier2" name="blend_classifier" value="classifier2">
+        <label for="blend_classifier2">Classifier 2</label><br>
+        <!-- Add more classifiers for blending as needed -->
+    </fieldset>
+
+    <button type="submit">Analyze Dataset</button>
+</form>
+
+<!-- JavaScript to toggle classifier selection based on blending option -->
+<script>
+    document.getElementById('blending').addEventListener('change', function() {
+        var blending = this.checked;
+        document.getElementById('classifiers').disabled = blending;
+        document.getElementById('blending_classifiers').disabled = !blending;
+    });
+</script>
+
+{% endblock %}
