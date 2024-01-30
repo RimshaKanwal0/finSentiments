@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Custom User form updated.">
-      <change afterPath="$PROJECT_DIR$/datasets/forms.py" afterDir="false" />
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Unversioned files.">
+      <change afterPath="$PROJECT_DIR$/base/templates/base/base.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/templates/base/includes/footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/templates/base/includes/header.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/base/templates/base/includes/navbar.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/base/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/datasets/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/templates/datasets/upload.html" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/templates/datasets/upload.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/datasets/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finSentiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +30,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -57,21 +65,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "master",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="finSentiments" type="Python.DjangoServer" factoryName="Django server">
       <module name="finSentiments" />
@@ -116,7 +125,7 @@
       <workItem from="1706451734412" duration="1941000" />
       <workItem from="1706604154392" duration="184000" />
       <workItem from="1706604356804" duration="1613000" />
-      <workItem from="1706609687852" duration="5989000" />
+      <workItem from="1706609687852" duration="10203000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -158,7 +167,23 @@
       <option name="project" value="LOCAL" />
       <updated>1706616924302</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Base app created.">
+      <option name="closed" value="true" />
+      <created>1706617957962</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1706617957962</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Unversioned files.">
+      <option name="closed" value="true" />
+      <created>1706617996196</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1706617996196</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -180,6 +205,8 @@
     <MESSAGE value="Initial settings done for urls." />
     <MESSAGE value="Example URLs setup to avoid exception." />
     <MESSAGE value="Custom User form updated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Custom User form updated." />
+    <MESSAGE value="Base app created." />
+    <MESSAGE value="Unversioned files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Unversioned files." />
   </component>
 </project>

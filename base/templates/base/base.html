@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'base/includes/header.html' %}
+<body>
+
+    {% include 'base/includes/navbar.html' %}
+
+    <main>
+        {% block content %}
+        <!-- Main content goes here -->
+        {% endblock %}
+    </main>
+
+    {% include 'base/includes/footer.html' %}
+
+    <!-- Add your JavaScript links here -->
+</body>
+</html>

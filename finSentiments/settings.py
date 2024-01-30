@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'reports',
     'jobs',
     'api',
-    "base.apps.BaseConfig"
+    'base',
 ]
 
 MIDDLEWARE = [
@@ -63,8 +63,7 @@ ROOT_URLCONF = 'finSentiments.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [os.path.join(BASE_DIR / 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
