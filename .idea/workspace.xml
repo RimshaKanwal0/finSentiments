@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="New apps initialized.">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Initial settings done for urls.">
+      <changelist_data name="Rana Faraz" email="" />
+      <change afterPath="$PROJECT_DIR$/analysis/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/api/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/datasets/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jobs/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/reports/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/users/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/finSentiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/settings.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,7 +22,19 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Rana Faraz" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
@@ -89,7 +105,7 @@
       <workItem from="1706451734412" duration="1941000" />
       <workItem from="1706604154392" duration="184000" />
       <workItem from="1706604356804" duration="1613000" />
-      <workItem from="1706609687852" duration="905000" />
+      <workItem from="1706609687852" duration="2050000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -99,7 +115,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706609480680</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Initial settings done for urls.">
+      <option name="closed" value="true" />
+      <created>1706610851555</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1706610851555</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -118,6 +142,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New apps initialized." />
-    <option name="LAST_COMMIT_MESSAGE" value="New apps initialized." />
+    <MESSAGE value="Initial settings done for urls." />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial settings done for urls." />
   </component>
 </project>
