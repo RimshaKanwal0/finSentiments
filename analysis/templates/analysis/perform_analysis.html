@@ -13,10 +13,12 @@
                         {% csrf_token %}
                         <!-- Dataset selection -->
                         <div class="form-group">
-                            <label for="datasetSelect">Select an existing dataset:</label>
+                            <label for="datasetSelect">Select a dataset:</label>
                             <select class="form-control" id="datasetSelect" name="dataset">
                                 {% for dataset in datasets %}
-                                    <option value="{{ dataset.id }}">{{ dataset.name }}</option>
+                                    <option value="{{ dataset.id }}" {% if selected_dataset and dataset.id == selected_dataset.id %}selected{% endif %}>
+                                        {{ dataset.name }}
+                                    </option>
                                 {% endfor %}
                             </select>
                         </div>

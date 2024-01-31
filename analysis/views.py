@@ -16,14 +16,14 @@ def analysis_progress(request):
     return render(request, 'analysis/analysis_progress.html')
 
 
-def perform_analysis(request):
-    datasets = Dataset.objects.all()  # Get all dataset instances
+def perform_analysis(request, dataset_id=None):
+    selected_dataset = None
+    if dataset_id:
+        selected_dataset = get_object_or_404(Dataset, pk=dataset_id)
 
-    if request.method == 'POST':
-        # Handle the file upload and analysis process
-        pass
-
-    return render(request, 'analysis/perform_analysis.html', {'datasets': datasets})
+    datasets = Dataset.objects.all()
+    return render(request, 'analysis/perform_analysis.html',
+                  {'datasets': datasets, 'selected_dataset': selected_dataset})
 
 # @login_required
 # def perform_analysis(request):

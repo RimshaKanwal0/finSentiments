@@ -1,29 +1,23 @@
 {% extends 'base/base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="container mt-4">
-    <div class="row">
-        <div class="col-12">
-            <h2>Dataset Management</h2>
-            <form method="post" enctype="multipart/form-data">
-                {% csrf_token %}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary">Upload Dataset</button>
-            </form>
-        </div>
-    </div>
+    <!-- ... other content ... -->
     <div class="row mt-3">
         {% for dataset in datasets %}
             <div class="col-md-3">
                 <div class="card">
-                    {% if dataset.thumbnail %}
-                        <img src="{{ dataset.thumbnail.url }}" class="card-img-top" alt="{{ dataset.name }}">
-                    {% else %}
-                        <img src="{% static 'images/default-thumbnail.png' %}" class="card-img-top" alt="Default Thumbnail">
-                    {% endif %}
+                    <a href="{% url 'analysis:perform_analysis_with_dataset' dataset.id %}">
+                        {% if dataset.thumbnail %}
+                            <img src="{{ dataset.thumbnail.url }}" class="card-img-top" alt="{{ dataset.name }}">
+                        {% else %}
+                            <img src="{% static 'images/default-file-thumbnail.png' %}" class="card-img-top" alt="Default Thumbnail">
+                        {% endif %}
+                    </a>
                     <div class="card-body">
                         <h5 class="card-title">{{ dataset.name }}</h5>
-                        <a href="{% url 'datasets:dataset_delete' dataset.pk %}" class="btn btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                        <!-- Delete button or other actions -->
                     </div>
                 </div>
             </div>

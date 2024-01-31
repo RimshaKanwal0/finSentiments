@@ -1,6 +1,9 @@
+# models.py within 'base' app
+
 from django.db import models
 from django.utils import timezone
 from users.models import CustomUser
+from .middleware import GlobalRequestMiddleware
 
 
 class BaseModel(models.Model):
@@ -11,3 +14,11 @@ class BaseModel(models.Model):
 
     class Meta:
         abstract = True
+
+    def save(self, *args, **kwargs):
+        user = GlobalRequestMiddleware.get_current_user()
+        if user and not user.is_anonymous:
+            if not self.pk:
+                self.created_by = user
+            self.updated_by = user
+        super().save(*args, **kwargs)
