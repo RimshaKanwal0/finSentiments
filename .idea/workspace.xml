@@ -4,8 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Landing page design updated.">
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="script.js updated and partners section carousel implemented.">
+      <change afterPath="$PROJECT_DIR$/static/images/about-us-featured.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/allied-bank-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/bank-alfalah-logo.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/hbl-logo.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/it-ministry-logo.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/moc-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/mof-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/nab-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/pppa-logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/sbp-logo.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/static/images/world-bank-logo.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/templates/base/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/includes/footer.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base/templates/base/includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/includes/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/finSentiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/templates/frontend/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/frontend/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
@@ -49,7 +64,7 @@
     </option>
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -131,7 +146,9 @@
       <workItem from="1706604356804" duration="1613000" />
       <workItem from="1706609687852" duration="36415000" />
       <workItem from="1706698604970" duration="16000" />
-      <workItem from="1706698652894" duration="354000" />
+      <workItem from="1706698652894" duration="6604000" />
+      <workItem from="1706709450758" duration="2790000" />
+      <workItem from="1706713560310" duration="356000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -261,7 +278,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706698724067</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="script.js updated and partners section carousel implemented.">
+      <option name="closed" value="true" />
+      <created>1706699213749</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1706699213749</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -294,6 +319,7 @@
     <MESSAGE value="perform_analysis.html improved and dataset app updated." />
     <MESSAGE value="Dataset CURD updated." />
     <MESSAGE value="Landing page design updated." />
-    <option name="LAST_COMMIT_MESSAGE" value="Landing page design updated." />
+    <MESSAGE value="script.js updated and partners section carousel implemented." />
+    <option name="LAST_COMMIT_MESSAGE" value="script.js updated and partners section carousel implemented." />
   </component>
 </project>
