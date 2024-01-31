@@ -119,27 +119,38 @@
 <section id="partners" class="py-5 bg-light">
   <div class="container">
     <h2 class="text-center mb-4">Our Partners</h2>
-    <div class="row text-center">
-      <!-- Partner 1 -->
-      <div class="col-md-3 col-sm-6 mb-4">
-        <img src="{% static 'images/iub-logo.png' %}" alt="Partner 1" class="img-fluid">
+    <div id="partnerCarousel" class="carousel slide" data-ride="carousel" data-interval="3000">
+      <div class="carousel-inner row mx-auto">
+        <!-- Partner 1 -->
+        <div class="carousel-item col-md-3 col-sm-6 mb-4 active">
+          <img src="{% static 'images/iub-logo.png' %}" alt="Partner 1" class="img-fluid">
+        </div>
+        <!-- Partner 2 -->
+        <div class="carousel-item col-md-3 col-sm-6 mb-4">
+          <img src="{% static 'images/ibmas-logo.jpg' %}" alt="Partner 2" class="img-fluid">
+        </div>
+        <!-- Partner 3 -->
+        <div class="carousel-item col-md-3 col-sm-6 mb-4">
+          <img src="{% static 'images/ssrcc-logo.png' %}" alt="Partner 3" class="img-fluid">
+        </div>
+        <!-- Partner 4 -->
+        <div class="carousel-item col-md-3 col-sm-6 mb-4">
+          <img src="{% static 'images/iss-logo.png' %}" alt="Partner 4" class="img-fluid">
+        </div>
+        <!-- More partners as needed -->
       </div>
-      <!-- Partner 2 -->
-      <div class="col-md-3 col-sm-6 mb-4">
-        <img src="{% static 'images/ibmas-logo.jpg' %}" alt="Partner 2" class="img-fluid">
-      </div>
-      <!-- Partner 3 -->
-      <div class="col-md-3 col-sm-6 mb-4">
-        <img src="{% static 'images/ssrcc-logo.png' %}" alt="Partner 3" class="img-fluid">
-      </div>
-      <!-- Partner 4 -->
-      <div class="col-md-3 col-sm-6 mb-4">
-        <img src="{% static 'images/iss-logo.png' %}" alt="Partner 4" class="img-fluid">
-      </div>
-      <!-- More partners as needed -->
+      <a class="carousel-control-prev" href="#partnerCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#partnerCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
 </section>
+
 
 <section id="pricing" class="py-5">
   <div class="container">

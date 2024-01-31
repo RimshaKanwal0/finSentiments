@@ -150,3 +150,18 @@ header {
 #partners img:hover {
   opacity: 1; /* Restore full opacity on hover for a subtle interaction effect */
 }
+
+#partnerCarousel .carousel-item {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  filter: invert(100%);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-size: 100%, 100%;
+}
