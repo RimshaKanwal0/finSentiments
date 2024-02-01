@@ -4,25 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="script.js updated and partners section carousel implemented.">
-      <change afterPath="$PROJECT_DIR$/static/images/about-us-featured.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/allied-bank-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/bank-alfalah-logo.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/hbl-logo.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/it-ministry-logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/moc-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/mof-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/nab-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/pppa-logo.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/sbp-logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/world-bank-logo.png" afterDir="false" />
+    <list default="true" id="66d02da8-456a-497b-be47-636959c0cb0a" name="Changes" comment="Home Page design updated.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/templates/analysis/perform_analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/templates/analysis/perform_analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/analysis/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/templates/base/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/base/templates/base/includes/footer.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/includes/footer.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/base/templates/base/includes/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/base/templates/base/includes/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/templates/datasets/dataset_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/templates/datasets/dataset_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/templates/datasets/upload.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/datasets/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/datasets/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/finSentiments/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/finSentiments/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/templates/frontend/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/templates/frontend/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/css/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/js/script.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/js/script.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -148,7 +145,7 @@
       <workItem from="1706698604970" duration="16000" />
       <workItem from="1706698652894" duration="6604000" />
       <workItem from="1706709450758" duration="2790000" />
-      <workItem from="1706713560310" duration="356000" />
+      <workItem from="1706713560310" duration="9552000" />
     </task>
     <task id="LOCAL-00001" summary="New apps initialized.">
       <option name="closed" value="true" />
@@ -286,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1706699213749</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Home Page design updated.">
+      <option name="closed" value="true" />
+      <created>1706714012088</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1706714012088</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -320,6 +325,7 @@
     <MESSAGE value="Dataset CURD updated." />
     <MESSAGE value="Landing page design updated." />
     <MESSAGE value="script.js updated and partners section carousel implemented." />
-    <option name="LAST_COMMIT_MESSAGE" value="script.js updated and partners section carousel implemented." />
+    <MESSAGE value="Home Page design updated." />
+    <option name="LAST_COMMIT_MESSAGE" value="Home Page design updated." />
   </component>
 </project>

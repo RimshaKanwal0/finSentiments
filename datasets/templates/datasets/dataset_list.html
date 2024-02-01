@@ -1,27 +1,128 @@
 {% extends 'base/base.html' %}
 {% load static %}
+{% load widget_tweaks %}
 
 {% block content %}
+
 <div class="container mt-4">
-    <!-- ... other content ... -->
+
+    <!-- Upload Dataset Form -->
+<div class="mb-4">
+    <h2>Upload New Dataset</h2>
+    <form action="{% url 'datasets:dataset_list' %}" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="id_name">Name</label>
+            {{ form.name|add_class:"form-control" }} <!-- Assuming form.name exists and you're using django-widget-tweaks -->
+            <div class="invalid-feedback">Please provide a dataset name.</div>
+        </div>
+        <div class="form-group">
+            <label for="id_description">Description</label>
+            {{ form.description|add_class:"form-control" }} <!-- Add description field -->
+            <div class="invalid-feedback">Please provide a brief description of the dataset.</div>
+        </div>
+        <div class="form-group">
+            <label for="id_file">File</label>
+            {{ form.file|add_class:"form-control-file" }}
+            <div class="invalid-feedback">Please select a dataset file to upload.</div>
+        </div>
+        <button type="submit" class="btn btn-primary">Upload Dataset</button>
+    </form>
+</div>
+
+<hr>
+    <form action="{% url 'analysis:perform-analysis' %}" method="get">
+        <div class="row">
+            <div class="col-md-6">
+                <label for="trainingDatasetSelect">Training Dataset:</label>
+                <select class="form-control" id="trainingDatasetSelect" name="training_dataset" title="The training dataset must contain two columns only: sentences and sentiments.">
+                    {% for dataset in datasets %}
+                    <option value="{{ dataset.id }}">{{ dataset.name }}</option>
+                    {% endfor %}
+                </select>
+                <small class="form-text text-muted">The training dataset must contain two columns only: sentences and sentiments.</small>
+            </div>
+            <div class="col-md-6">
+                <label for="testingDatasetSelect">Testing Dataset:</label>
+                <select class="form-control" id="testingDatasetSelect" name="testing_dataset">
+                    {% for dataset in datasets %}
+                    <option value="{{ dataset.id }}">{{ dataset.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Proceed to Analysis</button>
+    </form>
+    <hr>
     <div class="row mt-3">
         {% for dataset in datasets %}
             <div class="col-md-3">
-                <div class="card">
-                    <a href="{% url 'analysis:perform_analysis_with_dataset' dataset.id %}">
-                        {% if dataset.thumbnail %}
-                            <img src="{{ dataset.thumbnail.url }}" class="card-img-top" alt="{{ dataset.name }}">
-                        {% else %}
-                            <img src="{% static 'images/default-file-thumbnail.png' %}" class="card-img-top" alt="Default Thumbnail">
-                        {% endif %}
-                    </a>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ dataset.name }}</h5>
-                        <!-- Delete button or other actions -->
+                 <div class="card">
+                        <a href="{% url 'datasets:download_dataset' dataset.id %}">
+                            {% if dataset.thumbnail %}
+                                <img src="{{ dataset.thumbnail.url }}" class="card-img-top" alt="{{ dataset.name }}">
+                            {% else %}
+                                <img src="{% static 'images/default-file-thumbnail.png' %}" class="card-img-top" alt="Default Thumbnail">
+                            {% endif %}
+                        </a>
+                </div>
+
+                <div class="card-body">
+                    <h5 class="card-title">{{ dataset.name }}</h5>
+                    <p>
+                        {{ dataset.description|truncatewords:10 }}
+                        <!-- Info Button -->
+                        <button type="button" class="btn btn-info btn-sm" data-toggle="modal" data-target="#descriptionModal{{ dataset.id }}">
+                            <i class="fas fa-info-circle"></i>
+                        </button>
+                    </p>
+                    <p class="card-text"><small class="text-muted">Created at: {{ dataset.created_at|date:"N j, Y" }}</small>
+                    <br> <small class="text-muted">Created By: {{ dataset.created_by }}</small>
+                    </p>
+
+                    <!-- Delete Button -->
+                    <button type="button" class="btn btn-danger delete-item-btn"
+                            data-item-url="{% url 'datasets:dataset_delete' dataset.id %}">Delete</button>
+
+                    <!-- Description Modal -->
+                    <div class="modal fade" id="descriptionModal{{ dataset.id }}" tabindex="-1" aria-labelledby="descriptionModalLabel{{ dataset.id }}" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="descriptionModalLabel{{ dataset.id }}">{{ dataset.name }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    {{ dataset.description }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         {% endfor %}
     </div>
+
 </div>
+
+<script>
+// Example JavaScript for Bootstrap form validation
+(function() {
+  'use strict';
+  window.addEventListener('load', function() {
+    var forms = document.getElementsByClassName('needs-validation');
+    var validation = Array.prototype.filter.call(forms, function(form) {
+      form.addEventListener('submit', function(event) {
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+        }
+        form.classList.add('was-validated');
+      }, false);
+    });
+  }, false);
+})();
+</script>
 {% endblock %}

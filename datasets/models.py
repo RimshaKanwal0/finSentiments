@@ -13,14 +13,15 @@ from django.core.files.base import ContentFile
 
 
 def dataset_directory_path(instance, filename):
-    # Extract the file extension and prepare the new filename
-    extension = os.path.splitext(filename)[1]
-    new_filename = f"{instance.name}_{now().strftime('%Y%m%d%H%M%S')}{extension}"
+    base_filename, file_extension = os.path.splitext(filename)
+    timestamp = now().strftime('%Y%m%d%H%M%S')
+    new_filename = f"{base_filename}_{timestamp}{file_extension}"
     return os.path.join('datasets', new_filename)
 
 
 class Dataset(BaseModel):
     name = models.CharField(max_length=255, unique=True)
+    description = models.TextField(blank=True, null=True)
     file = models.FileField(upload_to=dataset_directory_path,
                             validators=[FileExtensionValidator(allowed_extensions=['csv', 'xlsx'])])
     thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
@@ -39,7 +40,7 @@ class Dataset(BaseModel):
         ]
 
     def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
+        super(Dataset, self).save(*args, **kwargs)
         if not self.thumbnail:
             self.generate_thumbnail()
 

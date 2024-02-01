@@ -16,14 +16,22 @@ def analysis_progress(request):
     return render(request, 'analysis/analysis_progress.html')
 
 
-def perform_analysis(request, dataset_id=None):
+def perform_analysis(request, training_dataset_id=None, testing_dataset_id=None):
     selected_dataset = None
-    if dataset_id:
-        selected_dataset = get_object_or_404(Dataset, pk=dataset_id)
 
     datasets = Dataset.objects.all()
+    if request.method == 'POST':
+        training_dataset_id = request.POST.get('training_dataset')
+        testing_dataset_id = request.POST.get('testing_dataset')
+        # Logic to handle analysis using the selected datasets
+        # You might want to pass these datasets to your analysis function
+
+    if training_dataset_id:
+        training_dataset = get_object_or_404(Dataset, pk=training_dataset_id)
+        testing_dataset = get_object_or_404(Dataset, pk=testing_dataset_id)
     return render(request, 'analysis/perform_analysis.html',
-                  {'datasets': datasets, 'selected_dataset': selected_dataset})
+                  {'datasets': datasets, 'training_dataset': training_dataset,
+                   'testing_dataset': testing_dataset})
 
 # @login_required
 # def perform_analysis(request):
