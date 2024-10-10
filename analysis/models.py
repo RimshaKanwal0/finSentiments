@@ -1,7 +1,6 @@
 from django.db import models
 from datasets.models import Dataset  # Adjust the import as per your project structure
 
-
 class AnalysisResult(models.Model):
     dataset = models.ForeignKey(Dataset, on_delete=models.CASCADE)
     result = models.JSONField()  # Store results as JSON
@@ -10,3 +9,4 @@ class AnalysisResult(models.Model):
 
     def __str__(self):
         return f"Analysis for {self.dataset.name}"
+

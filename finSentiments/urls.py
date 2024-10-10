@@ -20,6 +20,7 @@ from django.urls import path, include
 from django.conf.urls.static import static
 
 
+
 urlpatterns = [
     path('', include('frontend.urls')),  # This will include the URL patterns from the frontend app
     path('admin/', admin.site.urls),

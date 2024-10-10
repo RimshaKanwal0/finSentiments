@@ -8,26 +8,36 @@
                 <div class="card-header bg-primary text-white">
                     <h3 class="card-title">Perform Financial Sentiment Analysis</h3>
                 </div>
+
+
+                    <!-- Check if the 'success' message exists and display it -->
+    {% if success %}
+        <div style="color: green;">
+            <strong>{{ success }}</strong>
+        </div>
+    {% endif %}
+
+
                 <div class="card-body">
-                    <form method="post" action="{#% url 'analysis:perform_analysis' %#}" enctype="multipart/form-data">
+                    <form method="post" action="{% url 'analysis:perform_analysis' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         <!-- Dataset selection -->
-                        <div class="form-group">
-                            <label for="trainingDatasetSelect">Select Training Dataset:</label>
-                            <select class="form-control" id="trainingDatasetSelect" name="training_dataset">
-                                {% for dataset in datasets %}
-                                <option value="{{ dataset.id }}">{{ dataset.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="testingDatasetSelect">Select Testing Dataset:</label>
-                            <select class="form-control" id="testingDatasetSelect" name="testing_dataset">
-                                {% for dataset in datasets %}
-                                <option value="{{ dataset.id }}">{{ dataset.name }}</option>
-                                {% endfor %}
-                            </select>
-                        </div>
+<!--                        <div class="form-group">-->
+<!--                            <label for="trainingDatasetSelect">Select Training Dataset:</label>-->
+<!--                            <select class="form-control" id="trainingDatasetSelect" name="training_dataset">-->
+<!--                                {% for dataset in datasets %}-->
+<!--                                <option value="{{ dataset.id }}">{{ dataset.name }}</option>-->
+<!--                                {% endfor %}-->
+<!--                            </select>-->
+<!--                        </div>-->
+<!--                        <div class="form-group">-->
+<!--                            <label for="testingDatasetSelect">Select Testing Dataset:</label>-->
+<!--                            <select class="form-control" id="testingDatasetSelect" name="testing_dataset">-->
+<!--                                {% for dataset in datasets %}-->
+<!--                                <option value="{{ dataset.id }}">{{ dataset.name }}</option>-->
+<!--                                {% endfor %}-->
+<!--                            </select>-->
+<!--                        </div>-->
                         <div class="form-group">
                             <label>Select Preprocessing Techniques:</label>
                             <div class="checkbox">
@@ -51,6 +61,8 @@
                             </div>
                         </div>
                         <button type="submit" class="btn btn-primary">Start Analysis</button>
+
+
                     </form>
                 </div>
             </div>

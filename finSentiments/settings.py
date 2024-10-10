@@ -26,6 +26,7 @@ SECRET_KEY = 'django-insecure-g+^c_#=wgf3$$8uk106^r(p%dt1c8v!&6t^g2mpwk$+##t6j$o
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 ALLOWED_HOSTS = []
 
@@ -46,9 +47,9 @@ INSTALLED_APPS = [
     'jobs',
     'api',
     'base',
-    'rest_framework',
     'frontend',
     'widget_tweaks',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -67,7 +68,7 @@ ROOT_URLCONF = 'finSentiments.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'frontend' / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

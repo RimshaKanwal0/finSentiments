@@ -7,7 +7,7 @@ import os
 from django.utils.timezone import now
 from io import BytesIO
 from django.core.files import File
-from base.models import BaseModel  # Import BaseModel
+from base.models import BaseModel
 from django.conf import settings
 from django.core.files.base import ContentFile
 
