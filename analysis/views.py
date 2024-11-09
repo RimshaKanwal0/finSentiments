@@ -4,6 +4,7 @@ from .utils import perform_sentiment_analysis, preprocess_data
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .preprocess import preprocess_text
+from .analysis import train_and_evaluate_blended_classifier, initialize_classifiers
 import pandas as pd
 
 
@@ -19,33 +20,50 @@ def analysis_input(request):
 def analysis_progress(request):
     return render(request, 'analysis/analysis_progress.html')
 
-#main logic
-
 def perform_analysis(request):
     if request.method == 'POST':
+        # Get preprocessing options from the form
         remove_stopwords = 'remove_stopwords' in request.POST.getlist('preprocessing')
         lemmatization = 'lemmatization' in request.POST.getlist('preprocessing')
 
-        # Load your dataset (adjust the path as needed)
-        df = pd.read_csv('E:/django/sentimentproject/finSentiments/dataset/data.csv')
+        # Load dataset
+        try:
+            df = pd.read_csv('E:/django/sentimentproject/finSentiments/dataset/data.csv')
+        except Exception as e:
+            return render(request, 'analysis/perform_analysis.html', {
+                'error': 'Failed to load the dataset. Please check the file path and try again.'
+            })
 
         # Apply preprocessing
         df['Preprocessed_Sentence'] = df['Sentence'].apply(
             lambda x: preprocess_text(x, remove_stopwords=remove_stopwords, lemmatization=lemmatization)
         )
 
-        # Print or process the preprocessed data (e.g., save or pass it to the template)
-        print(df['Preprocessed_Sentence'].head())
+        # Select classifiers from POST request
+        selected_classifiers = request.POST.getlist('classifier')
 
-        # Optionally save the results back to a file
-        df.to_csv('E:/django/sentimentproject/finSentiments/dataset/preprocessed_data.csv', index=False)
+        # Initialize classifiers and filter by selected ones
+        classifiers_dict = initialize_classifiers()
+        classifiers_to_use = {key: classifiers_dict[key] for key in selected_classifiers if key in classifiers_dict}
 
-        # Confirmation message or redirect
-        return render(request, 'analysis/perform_analysis.html', {'success': 'Preprocessing completed successfully!'})
+        # Check if any classifier is selected
+        if not classifiers_to_use:
+            return render(request, 'analysis/perform_analysis.html', {
+                'error': 'No classifiers selected. Please select at least one classifier.'
+            })
+
+        # Train and evaluate the blended classifier, capturing results
+        results_dict = train_and_evaluate_blended_classifier(df, classifiers_to_use)
+
+        # Store results in session to pass to results.html
+        request.session['analysis_results'] = results_dict
+
+        # Redirect to results.html
+        return redirect('results')  # Ensure 'results' is mapped in your URL configuration
 
     return render(request, 'analysis/perform_analysis.html')
 
-#
+
 # def perform_analysis(request, training_dataset_id=None, testing_dataset_id=None):
 #     selected_dataset = None
 #     training_dataset = None

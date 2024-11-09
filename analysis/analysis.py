@@ -1,5 +1,3 @@
-# analysis.py
-
 import os
 import psutil
 import platform
@@ -26,7 +24,6 @@ from textblob import classifiers
 from gensim.models import Word2Vec
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.preprocessing import LabelEncoder
-
 
 # ======================== Helper Methods ==========================
 
@@ -197,31 +194,30 @@ def prepare_data(df, loaded_model, preprocessing_flag=1, smote_flag=1, test_size
 
     return X_train_dense, X_test_dense, y_train, y_test, label_encoder
 
-
 # ==================== Initialize Classifiers =======================
-
 def initialize_classifiers():
     classifiers = {
-        'Logistic Regression': LogisticRegression(max_iter=1000),
+        #'Logistic Regression': LogisticRegression(max_iter=1000),
         'SGD': SGDClassifier(),
         'Support Vector Machine': SVC(),
-        'Naive Bayes': MultinomialNB(),
-        'Bagging': BaggingClassifier(),
+        #'Naive Bayes': MultinomialNB(),
+        #'Bagging': BaggingClassifier(),
         # Add more classifiers as needed
     }
     return classifiers
 
+# Initialize classifiers dictionary
+classifiers_dict = initialize_classifiers()
 
 # ================= Additional Information ==========================
-
 additional_info = {
-    'Total Classifiers': len(classifiers),
-    'Total Features': len(tfidf_vectorizer.get_feature_names_out()),
-    # 'Total Features': X_train_tfidf.shape[1] + X_word2vec.shape[1],
-    'Training Data Size': len(y_train),
-    'Test Data Size': len(X_test_tfidf_dense),
-    'Random State': RAND_STATE,  # Replace with the actual random_state value used in train_test_split
-    'Preprocessing': PREPROCESSING_FLAG,
-    'SMOTE': SMOTE_FLAG
+    'Total Classifiers': len(classifiers_dict),  # Use classifiers_dict here
+    'Total Features': len(tfidf_vectorizer.get_feature_names_out()) if 'tfidf_vectorizer' in locals() else 0,
+    'Training Data Size': len(y_train) if 'y_train' in locals() else 0,
+    'Test Data Size': len(X_test_tfidf_dense) if 'X_test_tfidf_dense' in locals() else 0,
+    'Random State': RAND_STATE if 'RAND_STATE' in locals() else 'Not defined',
+    'Preprocessing': PREPROCESSING_FLAG if 'PREPROCESSING_FLAG' in locals() else 'Not defined',
+    'SMOTE': SMOTE_FLAG if 'SMOTE_FLAG' in locals() else 'Not defined'
 }
+
 

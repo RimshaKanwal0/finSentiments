@@ -2,7 +2,16 @@
 
 {% block content %}
 <h2>Analysis Results</h2>
-{% for result in results %}
-    <p>Sentiment: {{ result.result.sentiment }}</p>
-{% endfor %}
+{% if results %}
+    <h2>Analysis Results</h2>
+    <p>Accuracy: {{ results.Accuracy }}</p>
+    <p>Kappa: {{ results.Kappa }}</p>
+    <p>Precision: {{ results.Precision }}</p>
+    <p>Recall: {{ results.Recall }}</p>
+    <p>F1-Score: {{ results.F1_Score }}</p>
+    <h3>Confusion Matrix:</h3>
+    <pre>{{ results.Confusion_Matrix }}</pre>
+{% else %}
+    <p>No results found. Please perform an analysis first.</p>
+{% endif %}
 {% endblock %}

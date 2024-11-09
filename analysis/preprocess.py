@@ -52,8 +52,6 @@ def preprocess_text(text, remove_stopwords=False, lemmatization=False):
 
 
 
-
-#
 # import re
 # import nltk
 # import pandas as pd
