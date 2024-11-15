@@ -1,10 +1,18 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import AnalysisResult, Dataset
+from .models import AnalysisResult
 from .utils import perform_sentiment_analysis, preprocess_data
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .preprocess import preprocess_text
-from .analysis import train_and_evaluate_blended_classifier, initialize_classifiers
+from django.shortcuts import render
+from django.http import JsonResponse
+from .analysis import preprocess_text, train_and_evaluate_blended_classifier
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.preprocessing import LabelEncoder
+from imblearn.over_sampling import SMOTE
+from sklearn.model_selection import train_test_split
+import pandas as pd
+
+from .analysis import train_and_evaluate_blended_classifier
 import pandas as pd
 
 
@@ -16,52 +24,107 @@ def analysis_input(request):
     # Handle form submission and analysis logic here if needed
     return render(request, 'analysis/analysis_input.html')
 
-@login_required
-def analysis_progress(request):
-    return render(request, 'analysis/analysis_progress.html')
 
 def perform_analysis(request):
-    if request.method == 'POST':
-        # Get preprocessing options from the form
-        remove_stopwords = 'remove_stopwords' in request.POST.getlist('preprocessing')
-        lemmatization = 'lemmatization' in request.POST.getlist('preprocessing')
+    if request.method == "POST":
+        print("Received POST request for analysis.")  # Log when POST request is received
 
-        # Load dataset
+        # Load the dataset
         try:
-            df = pd.read_csv('E:/django/sentimentproject/finSentiments/dataset/data.csv')
+            dataset = pd.read_csv('E:/django/sentimentproject/finSentiments/dataset/data.csv')
+            print("Dataset loaded successfully.")  # Log dataset loading
         except Exception as e:
-            return render(request, 'analysis/perform_analysis.html', {
-                'error': 'Failed to load the dataset. Please check the file path and try again.'
-            })
+            print(f"Error loading dataset: {e}")  # Log error in dataset loading
+            return render(request, 'analysis/perform_analysis.html', {'error': f'Error loading dataset: {e}'})
 
-        # Apply preprocessing
-        df['Preprocessed_Sentence'] = df['Sentence'].apply(
-            lambda x: preprocess_text(x, remove_stopwords=remove_stopwords, lemmatization=lemmatization)
-        )
+        # Validate dataset columns
+        if 'Sentence' not in dataset.columns or 'Sentiment' not in dataset.columns:
+            print("Dataset validation failed: Missing required columns.")  # Log validation failure
+            return render(request, 'analysis/perform_analysis.html', {'error': "Dataset must contain 'Sentence' and 'Sentiment' columns."})
+        print("Dataset validation successful.")  # Log validation success
 
-        # Select classifiers from POST request
+        # Get form inputs
+        selected_preprocessing = request.POST.getlist('preprocessing')
+        enable_blending = request.POST.get('blending', False)  # This checks if the blending option is selected
         selected_classifiers = request.POST.getlist('classifier')
 
-        # Initialize classifiers and filter by selected ones
-        classifiers_dict = initialize_classifiers()
-        classifiers_to_use = {key: classifiers_dict[key] for key in selected_classifiers if key in classifiers_dict}
+        # If blending is enabled, automatically select all classifiers (SVM and SGD)
+        if enable_blending:
+            selected_classifiers = ['svm', 'sgd']
+            print("Blending is enabled. Classifiers automatically set to: SVM, SGD.")  # Log blending logic
 
-        # Check if any classifier is selected
-        if not classifiers_to_use:
-            return render(request, 'analysis/perform_analysis.html', {
-                'error': 'No classifiers selected. Please select at least one classifier.'
-            })
+        if not selected_classifiers:
+            print("No classifiers selected.")  # Log missing classifiers
+            return render(request, 'analysis/perform_analysis.html', {'error': "Please select at least one classifier."})
 
-        # Train and evaluate the blended classifier, capturing results
-        results_dict = train_and_evaluate_blended_classifier(df, classifiers_to_use)
+        # Preprocess text based on user selection
+        print("Starting text preprocessing...")  # Log preprocessing start
+        dataset['Preprocessed_Sentence'] = dataset['Sentence'].apply(
+            lambda text: preprocess_text(
+                text=text,
+                remove_stopwords='remove_stopwords' in selected_preprocessing,
+                lemmatization='lemmatization' in selected_preprocessing
+            )
+        )
+        print("Text preprocessing completed.")  # Log preprocessing completion
 
-        # Store results in session to pass to results.html
-        request.session['analysis_results'] = results_dict
+        # Extract features and labels
+        X = dataset['Preprocessed_Sentence']
+        y = dataset['Sentiment']
+        print("Features and labels extracted.")  # Log feature-label extraction
 
-        # Redirect to results.html
-        return redirect('results')  # Ensure 'results' is mapped in your URL configuration
+        # Encode labels
+        label_encoder = LabelEncoder()
+        y_encoded = label_encoder.fit_transform(y)
+        print("Labels encoded successfully.")  # Log label encoding
 
+        # Apply TF-IDF vectorization
+        tfidf_vectorizer = TfidfVectorizer()
+        X_tfidf = tfidf_vectorizer.fit_transform(X)
+        print("TF-IDF vectorization completed.")  # Log vectorization
+
+        # Balance the dataset using SMOTE (if blending is enabled)
+        if enable_blending:
+            smote = SMOTE(random_state=42)
+            X_balanced, y_balanced = smote.fit_resample(X_tfidf, y_encoded)
+            print("Dataset balanced using SMOTE.")  # Log SMOTE application
+        else:
+            X_balanced, y_balanced = X_tfidf, y_encoded
+            print("Dataset balancing skipped.")  # Log skipping of SMOTE
+
+        # Split data into training and testing sets
+        X_train, X_test, y_train, y_test = train_test_split(X_balanced, y_balanced, test_size=0.2, random_state=42)
+        print("Data split into training and testing sets.")  # Log data splitting
+
+        # Train and evaluate using selected classifiers
+        try:
+            print("Starting classifier training and evaluation...")  # Log start of training
+            results = train_and_evaluate_blended_classifier(
+                classifier_combo=selected_classifiers,
+                additional_info={'Enable Blending': enable_blending},
+                num_classifiers=len(selected_classifiers)
+            )
+            print("Classifier training and evaluation completed.")  # Log training completion
+        except Exception as e:
+            print(f"Error during analysis: {e}")  # Log error in analysis
+            return render(request, 'analysis/perform_analysis.html', {'error': f"Error during analysis: {e}"})
+
+        # Render success message with results
+        print("Analysis completed successfully.")  # Log successful completion
+        return render(
+            request,
+            'analysis/perform_analysis.html',
+            {
+                'success': "Analysis completed successfully!",
+                'results': results,
+                'total_classifiers': len(selected_classifiers)
+            }
+        )
+
+    # Render the default form page
+    print("Rendering analysis form page.")  # Log rendering of form page
     return render(request, 'analysis/perform_analysis.html')
+
 
 
 # def perform_analysis(request, training_dataset_id=None, testing_dataset_id=None):
@@ -108,7 +171,7 @@ def perform_analysis(request):
 #     return render(request, 'analysis/perform_analysis.html', {'datasets': datasets})
 #
 
-def analysis_result(request, dataset_id):
-    dataset = get_object_or_404(Dataset, id=dataset_id)
-    results = AnalysisResult.objects.filter(dataset=dataset)
-    return render(request, 'analysis/analysis_result.html', {'results': results, 'dataset': dataset})
+# def analysis_result(request, dataset_id):
+#     dataset = get_object_or_404(Dataset, id=dataset_id)
+#     results = AnalysisResult.objects.filter(dataset=dataset)
+#     return render(request, 'analysis/analysis_result.html', {'results': results, 'dataset': dataset})

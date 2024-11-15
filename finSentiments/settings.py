@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'frontend',
     'widget_tweaks',
     'rest_framework',
+
 ]
 
 MIDDLEWARE = [

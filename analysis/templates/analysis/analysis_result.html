@@ -1,11 +1,15 @@
 {% extends 'base/base.html' %}
 
 {% block content %}
-<h2>Analysis Results for {{ dataset.name }}</h2>
-{% for result in results %}
-    <div>
-        <!-- Display result details -->
-        <h2>Analysis Results for {{ dataset.name }}</h2>
-    </div>
+
+# Inside perform_analysis view
+# Render analysis-result.html to give a summary before going to detailed results
+
+return render(request, 'analysis/analysis-result.html', {
+    'results': results_dict,
+    'overall_accuracy': calculate_overall_accuracy(results_dict),  # Hypothetical function for overall accuracy
+})
+
+
 {% endfor %}
 {% endblock %}

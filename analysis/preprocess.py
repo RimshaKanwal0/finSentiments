@@ -1,54 +1,55 @@
-import re
-import nltk
-import pandas as pd
-from nltk.tokenize import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem import WordNetLemmatizer
-from num2words import num2words
-
-# Download required NLTK resources
-nltk.download('punkt')
-nltk.download('stopwords')
-nltk.download('wordnet')
-
-# Custom financial domain-specific stopwords
-custom_stopwords = set(["stock", "price", "earnings", "report", "investors", "company"])
-
-# Function to convert numbers to text representations
-def convert_numbers_to_text(tokens):
-    converted_tokens = []
-    for token in tokens:
-        if re.match(r'^-?\d+(?:\.\d+)?$', token):
-            converted_token = num2words(token, to='currency')
-            converted_tokens.extend(converted_token.split())
-        else:
-            converted_tokens.append(token)
-    return converted_tokens
-
-# Preprocessing function
-def preprocess_text(text, remove_stopwords=False, lemmatization=False):
-    text = text.lower()
-    text = re.sub(r"<.*?>", "", text)
-    text = re.sub(r"http\S+|www\S+|https\S+", "", text, flags=re.MULTILINE)
-
-    tokens = word_tokenize(text)
-
-    # Initialize lemmatizer
-    lemmatizer = WordNetLemmatizer()
-
-    # Remove stopwords and lemmatization if selected
-    if remove_stopwords:
-        tokens = [word for word in tokens if word.lower() not in stopwords.words('english') and word.lower() not in custom_stopwords]
-
-    if lemmatization:
-        tokens = [lemmatizer.lemmatize(word) for word in tokens]
-
-    tokens = [word for word in tokens if len(word) > 1]
-    tokens = convert_numbers_to_text(tokens)
-
-    preprocessed_text = ' '.join(tokens)
-
-    return preprocessed_text
+# import re
+# import nltk
+# import pandas as pd
+# from nltk.tokenize import word_tokenize
+# from nltk.corpus import stopwords
+# from nltk.stem import WordNetLemmatizer
+# from num2words import num2words
+#
+# # Download required NLTK resources
+#
+# nltk.download('punkt')
+# nltk.download('stopwords')
+# nltk.download('wordnet')
+#
+# # Custom financial domain-specific stopwords
+# custom_stopwords = set(["stock", "price", "earnings", "report", "investors", "company"])
+#
+# # Function to convert numbers to text representations
+# def convert_numbers_to_text(tokens):
+#     converted_tokens = []
+#     for token in tokens:
+#         if re.match(r'^-?\d+(?:\.\d+)?$', token):
+#             converted_token = num2words(token, to='currency')
+#             converted_tokens.extend(converted_token.split())
+#         else:
+#             converted_tokens.append(token)
+#     return converted_tokens
+#
+# # Preprocessing function
+# def preprocess_text(text, remove_stopwords=False, lemmatization=False):
+#     text = text.lower()
+#     text = re.sub(r"<.*?>", "", text)
+#     text = re.sub(r"http\S+|www\S+|https\S+", "", text, flags=re.MULTILINE)
+#
+#     tokens = word_tokenize(text)
+#
+#     # Initialize lemmatizer
+#     lemmatizer = WordNetLemmatizer()
+#
+#     # Remove stopwords and lemmatization if selected
+#     if remove_stopwords:
+#         tokens = [word for word in tokens if word.lower() not in stopwords.words('english') and word.lower() not in custom_stopwords]
+#
+#     if lemmatization:
+#         tokens = [lemmatizer.lemmatize(word) for word in tokens]
+#
+#     tokens = [word for word in tokens if len(word) > 1]
+#     tokens = convert_numbers_to_text(tokens)
+#
+#     preprocessed_text = ' '.join(tokens)
+#
+#     return preprocessed_text
 
 
 

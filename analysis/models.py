@@ -10,3 +10,4 @@ class AnalysisResult(models.Model):
     def __str__(self):
         return f"Analysis for {self.dataset.name}"
 
+
