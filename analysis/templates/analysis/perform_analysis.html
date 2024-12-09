@@ -72,8 +72,7 @@
     document.getElementById('blending').addEventListener('change', function() {
     var blending = this.checked;
     var classifiers = document.getElementById('classifiers');
-    classifiers.disabled = blending;  // Disable or enable the classifier selection based on blending checkbox
-
+    classifiers.disabled = blending;
     if (blending) {
         // Automatically select all classifiers when blending is checked
         Array.from(classifiers.options).forEach(option => option.selected = true);
