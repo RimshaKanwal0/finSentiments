@@ -66,10 +66,14 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'finSentiments.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'frontend' / 'templates'],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'frontend', 'templates'),  # Path to frontend app templates
+            os.path.join(BASE_DIR, 'analysis', 'templates'),  # Path to analysis app templates
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -81,6 +85,8 @@ TEMPLATES = [
         },
     },
 ]
+
+
 
 WSGI_APPLICATION = 'finSentiments.wsgi.application'
 

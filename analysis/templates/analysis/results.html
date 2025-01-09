@@ -1,70 +1,20 @@
-{% extends 'base/base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+</head>
+<body>
+    <h1>Analysis Results</h1>
 
-{% block content %}
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h3 class="card-title">Analysis Results</h3>
-                </div>
-                <div class="card-body">
+    {% if success %}
+        <h2>{{ message }}</h2>
+    {% else %}
+        <h2 style="color: red;">Error: {{ message }}</h2>
+    {% endif %}
 
-                    <!-- Display Success or Error Messages -->
-                    {% if success %}
-                        <div class="alert alert-success">
-                            {{ success }}
-                        </div>
-                    {% endif %}
-
-                    {% if error %}
-                        <div class="alert alert-danger">
-                            {{ error }}
-                        </div>
-                    {% endif %}
-
-                    <!-- Display Analysis Summary -->
-                    {% if results %}
-                        <h5>Summary:</h5>
-                        <ul>
-                            <li><strong>Total Classifiers Used:</strong> {{ total_classifiers }}</li>
-                            <li><strong>Blending Enabled:</strong> {{ blending_enabled|yesno:"Yes,No" }}</li>
-                        </ul>
-
-                        <!-- Display Results -->
-                        <h5>Results:</h5>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th>Classifier</th>
-                                    <th>Accuracy</th>
-                                    <th>Precision</th>
-                                    <th>Recall</th>
-                                    <th>F1-Score</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for result in results %}
-                                <tr>
-                                    <td>{{ result.classifier }}</td>
-                                    <td>{{ result.accuracy }}</td>
-                                    <td>{{ result.precision }}</td>
-                                    <td>{{ result.recall }}</td>
-                                    <td>{{ result.f1_score }}</td>
-                                </tr>
-                                {% endfor %}
-                            </tbody>
-                        </table>
-                    {% else %}
-                        <p>No results available. Please try again.</p>
-                    {% endif %}
-
-                </div>
-                <div class="card-footer text-center">
-                    <a href="{% url 'analysis:perform_analysis' %}" class="btn btn-primary">Run Another Analysis</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
+    <br>
+    <a href="{% url 'analysis:perform_analysis' %}">Go Back</a>
+</body>
+</html>

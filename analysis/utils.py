@@ -25,6 +25,12 @@ def preprocess_data(dataset, techniques):
     # Apply selected preprocessing techniques to dataset
     return preprocessed_data
 
+def bytes_to_mb_or_gb(memory_bytes):
+    if memory_bytes > (1024 ** 3):  # If the memory is greater than 1 GB
+        return f"{memory_bytes / (1024 ** 3):.2f} GB"
+    else:
+        return f"{memory_bytes / (1024 ** 2):.2f} MB"
+
 
 def perform_sentiment_analysis(data, classifiers, blending):
     analysis_result = None
